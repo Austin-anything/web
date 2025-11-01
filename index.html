@@ -1,205 +1,158 @@
-﻿<!DOCTYPE html>
+﻿<!doctype html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>나의 교사 유형 테스트</title>
 <style>
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
+:root{
+  --bg1:#ffe0ef; --bg2:#fffbe0; --accent:#e85a95; --muted:#444; --glass: rgba(255,255,255,0.85);
 }
-body {
-    font-family: 'Nanum Gothic', sans-serif;
-    min-height: 100vh;
-    background: linear-gradient(135deg, #ffe0ef 0%, #fffbe0 100%);
-    color: #333;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* 중앙 정렬을 위해 추가 */
-}
-#main-wrap {
-    padding:24px 12px 32px 12px;
-    max-width: 420px;
-    width: 100%;
-    background:rgba(255,255,255,0.7);
-    border-radius: 30px;
-    box-shadow: 0 8px 24px #f6b0d7, 0 1.5px 0 #ffe6f0 inset;
-    box-sizing: border-box;
-    margin: 0 auto;
-}
-h1 {
-    font-size:2rem;
-    font-weight:800;
-    margin-bottom:16px;
-    letter-spacing:-1.5px;
-    color:#e85a95;
-    background: linear-gradient(90deg,#e85a95 60%,#f7c86a 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip:text;
-    text-fill-color:transparent;
-}
-h1 .heart {
-    font-size:1.4em;
-    vertical-align:-0.1em;
-}
-#quiz, #result { display:none; text-align:center; }
-#intro {
-    text-align:center;
-    margin-top: 32px;
-    margin-bottom: 24px;
-}
-button {
-    padding:12px 25px;
-    font-size:1.1rem;
-    font-weight:600;
-    cursor:pointer;
-    border-radius:22px;
-    border:none;
-    background: linear-gradient(90deg, #ffe0ef 60%, #fffbe0 100%);
-    color: #c84d7c;
-    margin:8px auto 8px auto;
-    box-shadow: 0 2px 10px #ffe0ef66;
-    transition: transform 0.08s, box-shadow 0.2s;
-    display:block;
-}
-button:hover {
-    transform:translateY(-2px) scale(1.04);
-    box-shadow: 0 5px 20px #f7c86a77;
-    background: linear-gradient(90deg, #fffbe0 30%, #ffe0ef 100%);
-}
-#options button {
-    color:#222;
-    background:linear-gradient(90deg,#fffbe0 65%,#ffe0ef 100%);
-    border:1.5px solid #ffe0ef;
-    margin-bottom: 10px;
-    margin-top: 0;
-    font-size:1.05rem;
-    box-shadow: 0 2px 6px #ffe0ef44;
-}
-#options button:active {
-    background:linear-gradient(90deg,#ffe0ef 65%,#fffbe0 100%);
-}
-#quiz {
-    background:rgba(255,255,255,0.92);
-    border-radius:24px;
-    box-shadow:0 4px 16px #ffe0ef55;
-    padding: 24px 10px 20px 10px;
-    margin: 0 0 10px 0;
-}
-#question {
-    font-size:1.13rem;
-    color:#f35b98;
-    margin-bottom:22px;
-    font-weight:700;
-    letter-spacing:-0.5px;
-}
-#result {
-    background:rgba(255,251,224,0.97);
-    border-radius:22px;
-    box-shadow:0 4px 20px #f6b0d766;
-    padding: 28px 10px 36px 10px;
-    margin: 0 0 10px 0;
-}
-#resultTitle {
-    font-size:1.2rem;
-    color:#e85a95;
-    font-weight:800;
-    letter-spacing:-0.5px;
-    margin-bottom:10px;
-}
-img.result-img {
-    max-width:180px;
-    margin:10px 0 12px 0;
-    border-radius: 18px;
-    border: 3px solid #ffe0ef;
-    background:#fffbe0;
-    box-shadow: 0 2px 8px #ffe0ef55;
-}
-#resultDesc {
-    color:#444;
-    font-size:1rem;
-    margin: 12px 0 22px 0;
-    background: #fffbe0;
-    border-radius: 12px;
-    display: inline-block;
-    padding: 12px 22px;
-    box-shadow: 0 1px 6px #ffe0ef33;
-    line-height:1.6;
-}
-#homeBtn {
-    background: linear-gradient(90deg, #ffe0ef 70%, #fffbe0 100%);
-    color: #d18716;
-    font-size:1.08rem;
-    font-weight:700;
-    border: 1px solid #ffe0ef;
-    box-shadow: 0 2px 10px #ffe0ef77;
-}
-#homeBtn:hover {
-    background: linear-gradient(90deg, #fffbe0 30%, #ffe0ef 100%);
-}
-@media (max-width:768px){
-    html, body { height: 100%; }
-    body {
-        min-height: 100vh;
-        padding: 0;
-        /* 중앙정렬은 유지 */
-    }
-    #main-wrap {
-        padding:14px 2px 16px 2px;
-        margin-top:0;
-        max-width:98vw;
-    }
-    h1 { font-size:1.22rem; }
-    button { width:94%; font-size:0.97rem; }
-    #resultDesc { font-size:0.95rem; }
-    #question { font-size:1rem; }
+html,body{height:100%;margin:0;padding:0;font-family:'Nanum Gothic',sans-serif;background:linear-gradient(135deg,var(--bg1) 0%, var(--bg2) 100%);color:#333;display:flex;align-items:center;justify-content:center;}
+#main-wrap{width:100%;max-width:520px;padding:24px;border-radius:30px;background:var(--glass);box-shadow:0 8px 24px #f6b0d7, 0 1.5px 0 #ffe6f0 inset;box-sizing:border-box;}
+h1{font-size:1.7rem;font-weight:800;letter-spacing:-1px;margin:0 0 12px;background:linear-gradient(90deg,var(--accent) 60%,#f7c86a 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.card{background:rgba(255,255,255,0.94);border-radius:18px;padding:18px;box-shadow:0 4px 16px #ffe0ef55;margin-top:16px;}
+.center{text-align:center;}
+button{appearance:none;padding:12px 20px;border-radius:20px;border:none;background:linear-gradient(90deg,#ffe0ef 60%,#fffbe0 100%);color:#c84d7c;font-weight:700;cursor:pointer;box-shadow:0 2px 10px #ffe0ef66;transition:transform .08s,box-shadow .2s;display:inline-block;}
+button:hover{transform:translateY(-2px) scale(1.03);box-shadow:0 5px 20px #f7c86a77;background:linear-gradient(90deg,#fffbe0 30%,#ffe0ef 100%);}
+button[disabled]{opacity:.6;transform:none;cursor:default;box-shadow:none;}
+#startBtn,#homeBtn{width:100%;}
+#quiz{display:none;}
+#question{font-size:1.12rem;color:var(--accent);font-weight:800;margin:8px 0 14px;}
+#progress{height:8px;background:#ffeef7;border-radius:999px;overflow:hidden;margin-bottom:12px;}
+#progress > i{display:block;height:100%;background:linear-gradient(90deg,#f7c86a,#ffe0ef);width:0%;}
+#options{display:flex;flex-direction:column;gap:10px;}
+.option-btn{background:linear-gradient(90deg,#fffbe0 65%,#ffe0ef 100%);color:#222;border:1.5px solid #ffe0ef;padding:12px 14px;text-align:left;font-size:1.02rem;}
+.option-btn:active{background:linear-gradient(90deg,#ffe0ef 65%,#fffbe0 100%);}
+.option-btn:focus{outline:3px solid rgba(232,90,149,0.12);}
+#result{display:none;padding:22px;border-radius:18px;background:linear-gradient(180deg,#fffbe0 0%, #fff6de 100%);box-shadow:0 4px 20px #f6b0d766;text-align:center;}
+.result-img{max-width:160px;border-radius:16px;border:3px solid #ffe0ef;background:#fffbe0;box-shadow:0 2px 8px #ffe0ef55;margin:10px auto 12px;display:block;}
+#resultTitle{font-size:1.1rem;color:var(--accent);font-weight:800;margin:6px 0;}
+#resultDesc{color:var(--muted);font-size:1rem;line-height:1.6;background:#fffbe0;padding:12px;border-radius:10px;display:inline-block;text-align:left;white-space:pre-wrap;max-width:100%;}
+.visually-hidden{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap;border:0;padding:0;margin:-1px;}
+@media (max-width:600px){
+  #main-wrap{padding:14px;}
+  h1{font-size:1.15rem;}
+  button{font-size:0.98rem;}
+  #resultDesc{font-size:0.95rem;}
 }
 </style>
 </head>
 <body>
-<div id="main-wrap">
-    <!-- 인트로 화면 -->
-    <div id="intro">
-        <h1><span class="heart">💛</span> 나의 교사 유형 테스트</h1>
-        <button id="startBtn">테스트 시작</button>
+<main id="main-wrap" role="main" aria-labelledby="pageTitle">
+  <h1 id="pageTitle">💛 나의 교사 유형 테스트</h1>
+
+  <section id="intro" class="card center" aria-hidden="false">
+    <button id="startBtn" type="button">테스트 시작</button>
+  </section>
+
+  <section id="quiz" class="card" aria-hidden="true" aria-live="polite">
+    <div id="meta" style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+      <div id="qnLabel" style="font-weight:700;color:#8b6a7a;"></div>
+      <div id="qnProgressText" style="font-size:0.92rem;color:#8b6a7a;"></div>
     </div>
-    <!-- 퀴즈 화면 -->
-    <div id="quiz">
-        <h2 id="question"></h2>
-        <div id="options"></div>
+    <div id="progress" aria-hidden="true"><i id="progressBar" style="width:0%"></i></div>
+
+    <h2 id="question" role="heading" aria-level="2"></h2>
+    <div id="options" role="list" aria-label="답변 선택지"></div>
+  </section>
+
+  <section id="result" class="card center" aria-hidden="true" aria-live="polite">
+    <h2 id="resultTitle"></h2>
+    <img id="resultImg" class="result-img" src="" alt="" hidden>
+    <div id="resultDesc" tabindex="0"></div>
+
+    <div style="margin-top:14px;">
+      <button id="homeBtn" type="button">🏠 홈으로 돌아가기</button>
     </div>
-    <!-- 결과 화면 -->
-    <div id="result">
-        <h2 id="resultTitle"></h2>
-        <img id="resultImg" class="result-img" src="" alt="">
-        <p id="resultDesc" style="white-space: pre-line;"></p>
-        <button id="homeBtn">🏠 홈으로 돌아가기</button>
-    </div>
-</div>
+  </section>
+</main>
+
 <script>
+/* 질문 데이터 */
 const questions = [
-{ q:"어린이집 실습 첫날 교실에 들어가자마자 나는?", options:["아이들 이름 다 외우려는 인간 암기왕", "선생님 옆에서 노트에 메모만 빼곡히 작성하는 관찰러", "애들이랑 같이 블록 쌓다가 시간 다 감", "사실 긴장해서 손에 땀 범벅…"] },
-{ q:"유아가 갑자기 울음을 터뜨렸다! 그럴 때 나는?", options:["바로 옆으로 달려가 “왜 울었어?” 하며 안심시킨다", "상황을 머릿속으로 정리하며 ‘왜 울었을까?’ 분석", "잠시 멘붕 오지만 다른 교사에게 도움 요청", "함께 찡그린 표정으로 “나도 속상해…” 하며 공감 폭발"] },
-{ q:"아이들과 놀이 시간을 보낸 뒤 나는?", options:["아이들 반응이 어땠는지 바로 기록하며 반성", "“오늘 애들이 너무 귀여웠어ㅠㅠ” 하며 친구에게 자랑", "체력이 방전돼 잠깐 멍 때리기", "다음엔 더 재밌게 하려고 놀이 아이디어 바로 메모"] },
-{ q:"내가 꿈꾸는 교사는?", options:["아이 한 명 한 명의 마음을 읽을 줄 아는 따뜻한 교사", "체계적으로 수업을 이끌고 기록하는 꼼꼼한 교사", "놀이 속에서 아이들과 함께 웃는 친구 같은 교사", "새로운 시도를 두려워하지 않는 창의적인 교사"] },
-{ q:"교생 실습 중 지도교사에게 피드백을 받았다면?", options:["고개 끄덕이며 바로 메모하고 수정", "‘이건 왜 이렇게 말씀하셨을까?’ 속으로 분석", "잠깐 기분이 다운됐다가 금세 회복", "다음 수업에 바로 반영해보는 실험정신!"] },
-{ q:"반 아이가 나를 계속 따라다닌다! 그럴 때 나는?", options:["“귀엽다~” 하며 같이 놀아줌", "“이 아이가 나한테 유독 붙는 이유가 뭘까?”", "너무 귀여워서 몰래 사진 찍고 싶어짐", "살짝 부담돼서 다른 아이들에게도 시선 돌림"] },
-{ q:"부모참관 수업 날! 부모님이 뒤에서 보고 있다면 나는?", options:["갑자기 톤 높이고 텐션 업!", "머릿속으로 ‘지금 시간 5분 지났으니까 다음 활동!’", "긴장해서 손동작이 살짝 뻣뻣해짐", "자연스럽게 아이들하고만 눈 맞춤"] },
-{ q:"교육봉사 중 아이가 내 손을 꼭 잡고 ‘가지 마요’ 한다면?", options:["눈물 글썽이며 “나도 너 좋아해”", "미소 지으며 “우리 다음에 또 보자~”", "속으론 찡하지만 웃으며 다독임", "그 장면을 마음속에 오래 담아두는 감성 기록러"] },
-{ q:"수업이 끝나고 돌아가는 길, 나는?", options:["오늘 아이들 표정 떠올리며 미소 짓는다", "내 수업에서 부족했던 점 메모", "“오늘 너무 힘들었어…” 하며 단짠 간식 찾기", "다음 수업 아이디어 벌써 떠올리기"] }
+  { q:"어린이집 실습 첫날 교실에 들어가자마자 나는?", options:[
+      {text:"아이들 이름 다 외우려는 인간 암기왕", type:"A"},
+      {text:"선생님 옆에서 노트에 메모만 빼곡히 작성하는 관찰러", type:"B"},
+      {text:"애들이랑 같이 블록 쌓다가 시간 다 감", type:"C"},
+      {text:"사실 긴장해서 손에 땀 범벅…", type:"D"}
+    ]
+  },
+  { q:"유아가 갑자기 울음을 터뜨렸다! 그럴 때 나는?", options:[
+      {text:"바로 옆으로 달려가 “왜 울었어?” 하며 안심시킨다", type:"A"},
+      {text:"상황을 머릿속으로 정리하며 ‘왜 울었을까?’ 분석", type:"B"},
+      {text:"잠시 멘붕 오지만 다른 교사에게 도움 요청", type:"C"},
+      {text:"함께 찡그린 표정으로 “나도 속상해…” 하며 공감 폭발", type:"A"}
+    ]
+  },
+  { q:"아이들과 놀이 시간을 보낸 뒤 나는?", options:[
+      {text:"아이들 반응이 어땠는지 바로 기록하며 반성", type:"B"},
+      {text:"“오늘 애들이 너무 귀여웠어ㅠㅠ” 하며 친구에게 자랑", type:"C"},
+      {text:"체력이 방전돼 잠깐 멍 때리기", type:"D"},
+      {text:"다음엔 더 재밌게 하려고 놀이 아이디어 바로 메모", type:"B"}
+    ]
+  },
+  { q:"내가 꿈꾸는 교사는?", options:[
+      {text:"아이 한 명 한 명의 마음을 읽을 줄 아는 따뜻한 교사", type:"A"},
+      {text:"체계적으로 수업을 이끌고 기록하는 꼼꼼한 교사", type:"B"},
+      {text:"놀이 속에서 아이들과 함께 웃는 친구 같은 교사", type:"C"},
+      {text:"새로운 시도를 두려워하지 않는 창의적인 교사", type:"D"}
+    ]
+  },
+  { q:"교생 실습 중 지도교사에게 피드백을 받았다면?", options:[
+      {text:"고개 끄덕이며 바로 메모하고 수정", type:"B"},
+      {text:"‘이건 왜 이렇게 말씀하셨을까?’ 속으로 분석", type:"B"},
+      {text:"잠깐 기분이 다운됐다가 금세 회복", type:"C"},
+      {text:"다음 수업에 바로 반영해보는 실험정신!", type:"D"}
+    ]
+  },
+  { q:"반 아이가 나를 계속 따라다닌다! 그럴 때 나는?", options:[
+      {text:"“귀엽다~” 하며 같이 놀아줌", type:"C"},
+      {text:"“이 아이가 나한테 유독 붙는 이유가 뭘까?”", type:"B"},
+      {text:"너무 귀여워서 몰래 사진 찍고 싶어짐", type:"C"},
+      {text:"살짝 부담돼서 다른 아이들에게도 시선 돌림", type:"D"}
+    ]
+  },
+  { q:"부모참관 수업 날! 부모님이 뒤에서 보고 있다면 나는?", options:[
+      {text:"갑자기 톤 높이고 텐션 업!", type:"C"},
+      {text:"머릿속으로 ‘지금 시간 5분 지났으니까 다음 활동!’", type:"B"},
+      {text:"긴장해서 손동작이 살짝 뻣뻣해짐", type:"D"},
+      {text:"자연스럽게 아이들하고만 눈 맞춤", type:"A"}
+    ]
+  },
+  { q:"교육봉사 중 아이가 내 손을 꼭 잡고 ‘가지 마요’ 한다면?", options:[
+      {text:"눈물 글썽이며 “나도 너 좋아해”", type:"A"},
+      {text:"미소 지으며 “우리 다음에 또 보자~”", type:"A"},
+      {text:"속으론 찡하지만 웃으며 다독임", type:"C"},
+      {text:"그 장면을 마음속에 오래 담아두는 감성 기록러", type:"D"}
+    ]
+  },
+  { q:"수업이 끝나고 돌아가는 길, 나는?", options:[
+      {text:"오늘 아이들 표정 떠올리며 미소 짓는다", type:"A"},
+      {text:"내 수업에서 부족했던 점 메모", type:"B"},
+      {text:"“오늘 너무 힘들었어…” 하며 단짠 간식 찾기", type:"C"},
+      {text:"다음 수업 아이디어 벌써 떠올리기", type:"D"}
+    ]
+  }
 ];
 
+/* 결과 설명 */
 const results = {
-A: { title:"💖 A 유형 – 따뜻한 공감형 교사(아이의 마음이 먼저 보여요.)", img:"a.png", desc:"특징: 누구보다 아이의 감정에 공감하고, 아이가 웃을 때 같이 웃는 타입. 어려운 상황에서도 따뜻한 말 한마디로 분위기를 풀어가는 능력자!\n\n장점: 따뜻한 눈빛과 배려로 아이들에게 ‘정서적 안정감’을 주는 교사\n\n주의점: 남의 감정에 너무 몰입해서 가끔 자기 감정이 지쳐버릴 때가 있음\n\n어울리는 교실 분위기: 포근하고 정겨운, 웃음소리 가득한 반" },
-B: { title:"📒 B 유형 – 꼼꼼한 계획형 교사(체계가 있어야 아이들이 더 자라요.)", img:"b.png", desc:"특징: 수업 전에 플래시카드부터 안전지도까지 완벽하게 준비! 교육과정을 분석하고 메모하며 계획 세우는 게 제일 안정되는 스타일.\n\n장점: 교사로서 신뢰감이 크고, 평가·기록·계획에서 탁월함\n\n주의점: 계획이 어긋나면 스트레스 받거나 융통성이 조금 부족할 수 있음\n\n어울리는 교실 분위기: 정돈되고 깔끔한, 체계적인 환경" },
-C: { title:"🌈 C 유형 – 감성적인 자유형 교사(아이들과 함께 웃고 뛰는 게 나의 행복이에요.)", img:"c.png", desc:"특징: 즉흥적이지만 진심으로 아이들과 ‘순간’을 즐기는 타입! 실습 중에도 “이건 놀이야!” 하며 몰입하다가 교사도 함께 놀아버림\n\n장점: 아이들이 편안하게 다가오는 친근한 에너지\n\n주의점: 가끔 준비 부족이나 시간 관리가 아쉬울 때도 있음\n\n어울리는 교실 분위기: 자유롭고 따뜻한, 놀이 중심의 공간" },
-D: { title:"🚀 D 유형 – 창의적 혁신형 교사(새로운 방법 없을까? 그럼 내가 만들어볼게!)", img:"d.png", desc:"특징: AI, 새로운 교수법, 트렌드에 관심 많고 실험정신이 강한 타입. “이건 애들 흥미 자극에 좋겠다!” 하며 바로 시도하는 추진력 만렙 교사.\n\n장점: 유연하고 창의적인 교육 접근으로 아이들의 호기심 자극\n\n주의점: 디테일보단 전체 흐름에 집중하다가 빠진 부분이 생길 수 있음\n\n어울리는 교실 분위기: 개성 있고 활발한, 도전적인 반" }
+  A: { title:"💖 A 유형 – 따뜻한 공감형 교사", desc:"특징: 누구보다 아이의 감정에 공감하고, 아이가 웃을 때 같이 웃는 타입.\n\n장점: 따뜻한 눈빛과 배려로 아이들에게 ‘정서적 안정감’을 주는 교사\n\n주의점: 남의 감정에 너무 몰입해서 가끔 자기 감정이 지쳐버릴 때가 있음\n\n어울리는 교실 분위기: 포근하고 정겨운, 웃음소리 가득한 반" },
+  B: { title:"📒 B 유형 – 꼼꼼한 계획형 교사", desc:"특징: 수업 전에 플래시카드부터 안전지도까지 완벽하게 준비! 교육과정을 분석하고 메모하며 계획 세우는 게 안정되는 스타일.\n\n장점: 교사로서 신뢰감이 크고, 평가·기록·계획에서 탁월함\n\n주의점: 계획이 어긋나면 스트레스 받거나 융통성이 조금 부족할 수 있음\n\n어울리는 교실 분위기: 정돈되고 깔끔한, 체계적인 환경" },
+  C: { title:"🌈 C 유형 – 감성적인 자유형 교사", desc:"특징: 즉흥적이지만 진심으로 아이들과 ‘순간’을 즐기는 타입! 놀이 중 아이들과 함께 몰입하는 에너지가 강함.\n\n장점: 아이들이 편안하게 다가오는 친근한 에너지\n\n주의점: 가끔 준비 부족이나 시간 관리가 아쉬울 때도 있음\n\n어울리는 교실 분위기: 자유롭고 따뜻한, 놀이 중심의 공간" },
+  D: { title:"🚀 D 유형 – 창의적 혁신형 교사", desc:"특징: 새로운 교수법, 트렌드에 관심 많고 실험정신이 강한 타입. 바로 시도하는 추진력이 강함.\n\n장점: 유연하고 창의적인 교육 접근으로 아이들의 호기심 자극\n\n주의점: 디테일보단 전체 흐름에 집중하다가 빠진 부분이 생길 수 있음\n\n어울리는 교실 분위기: 개성 있고 활발한, 도전적인 반" }
 };
 
+/* SVG 이미지(내장) */
+const svgData = {
+  A: "data:image/svg+xml;utf8," + encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'><rect width='100%' height='100%' fill='#fffbe0'/><circle cx='200' cy='175' r='140' fill='#f7c86a'/><text x='200' y='225' font-size='140' text-anchor='middle' font-family='Nanum Gothic,Arial' font-weight='800' fill='#e85a95'>A</text></svg>`),
+  B: "data:image/svg+xml;utf8," + encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'><rect width='100%' height='100%' fill='#fffbe0'/><rect x='40' y='80' width='320' height='220' rx='24' fill='#ffdfe8' stroke='#ffe6f0' stroke-width='6'/><text x='200' y='230' font-size='140' text-anchor='middle' font-family='Nanum Gothic,Arial' font-weight='800' fill='#6b4a78'>B</text></svg>`),
+  C: "data:image/svg+xml;utf8," + encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'><rect width='100%' height='100%' fill='#fffbe0'/><circle cx='200' cy='180' r='140' fill='#ffdfe8'/><text x='200' y='230' font-size='140' text-anchor='middle' font-family='Nanum Gothic,Arial' font-weight='800' fill='#2d6a5f'>C</text></svg>`),
+  D: "data:image/svg+xml;utf8," + encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'><rect width='100%' height='100%' fill='#fffbe0'/><polygon points='200,40 340,340 60,340' fill='#f2e1ff'/><text x='200' y='240' font-size='140' text-anchor='middle' font-family='Nanum Gothic,Arial' font-weight='800' fill='#d46b2b'>D</text></svg>`)
+};
+
+/* 상태값 및 DOM 참조 */
 let currentQuestion = 0;
 let score = { A:0, B:0, C:0, D:0 };
 
@@ -213,64 +166,152 @@ const resultTitle = document.getElementById('resultTitle');
 const resultDesc = document.getElementById('resultDesc');
 const resultImg = document.getElementById('resultImg');
 const homeBtn = document.getElementById('homeBtn');
+const progressBar = document.getElementById('progressBar');
+const qnLabel = document.getElementById('qnLabel');
+const qnProgressText = document.getElementById('qnProgressText');
 
-// 시작 버튼
+/* 시작 */
 startBtn.addEventListener('click', () => {
-    intro.style.display='none';
-    quiz.style.display='block';
-    showQuestion();
+  intro.style.display = 'none';
+  intro.setAttribute('aria-hidden','true');
+  quiz.style.display = 'block';
+  quiz.setAttribute('aria-hidden','false');
+  currentQuestion = 0;
+  score = { A:0, B:0, C:0, D:0 };
+  renderQuestion();
 });
 
-// 질문 표시
-function showQuestion() {
-    const q = questions[currentQuestion];
-    questionEl.textContent = q.q;
-    optionsEl.innerHTML = '';
-    q.options.forEach((opt, idx) => {
-        const btn = document.createElement('button');
-        btn.textContent = opt;
-        btn.onclick = () => selectAnswer(idx);
-        optionsEl.appendChild(btn);
-    });
+/* 질문 렌더링 */
+function renderQuestion(){
+  const q = questions[currentQuestion];
+  questionEl.textContent = q.q;
+  qnLabel.textContent = `질문 ${currentQuestion+1} / ${questions.length}`;
+  qnProgressText.textContent = `${currentQuestion+1} / ${questions.length}`;
+  const pct = Math.round(((currentQuestion)/questions.length)*100);
+  progressBar.style.width = pct + '%';
+
+  optionsEl.innerHTML = '';
+  q.options.forEach((opt, idx) => {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'option-btn';
+    btn.setAttribute('role','listitem');
+    btn.innerText = opt.text;
+    btn.dataset.type = opt.type;
+    btn.dataset.idx = idx;
+    btn.addEventListener('click', onSelect);
+    btn.tabIndex = 0;
+    optionsEl.appendChild(btn);
+  });
+
+  const firstBtn = optionsEl.querySelector('button');
+  if(firstBtn) firstBtn.focus();
 }
 
-// 답 선택
-function selectAnswer(idx) {
-    if(idx===0) score.A++;
-    else if(idx===1) score.B++;
-    else if(idx===2) score.C++;
-    else if(idx===3) score.D++;
-    
+/* 선택 처리 (중복 방지) */
+let selecting = false;
+function onSelect(e){
+  if(selecting) return;
+  selecting = true;
+  const btn = e.currentTarget;
+  const type = btn.dataset.type;
+  Array.from(optionsEl.querySelectorAll('button')).forEach(b => b.disabled = true);
+  btn.style.boxShadow = 'inset 0 0 0 2px rgba(0,0,0,0.04)';
+  if(type && score.hasOwnProperty(type)) score[type]++;
+
+  setTimeout(() => {
     currentQuestion++;
-    if(currentQuestion<questions.length) showQuestion();
-    else showResult();
-}
-
-// 결과 표시
-function showResult() {
-    quiz.style.display='none';
-    resultEl.style.display='block';
-    
-    let maxType='A';
-    let maxScore=score.A;
-    for(const t of ['B','C','D']){
-        if(score[t]>maxScore){ maxScore=score[t]; maxType=t; }
+    selecting = false;
+    if(currentQuestion < questions.length) {
+      renderQuestion();
+    } else {
+      showResult();
     }
-    
-    resultTitle.textContent = results[maxType].title;
-    resultDesc.textContent = results[maxType].desc;
-    resultImg.src = results[maxType].img;
+  }, 220);
 }
 
-// 홈 버튼
-homeBtn.onclick = () => {
-    currentQuestion = 0;
-    score = { A:0, B:0, C:0, D:0 };
-    resultEl.style.display='none';
-    intro.style.display='block';
-};
+/* 키보드 내비게이션 */
+document.addEventListener('keydown', (ev) => {
+  if(quiz.getAttribute('aria-hidden') === 'false'){
+    const focused = document.activeElement;
+    if(focused && focused.classList.contains('option-btn')){
+      if(ev.key === 'ArrowDown' || ev.key === 'ArrowRight'){
+        ev.preventDefault();
+        const next = focused.nextElementSibling || optionsEl.querySelector('button');
+        if(next) next.focus();
+      } else if(ev.key === 'ArrowUp' || ev.key === 'ArrowLeft'){
+        ev.preventDefault();
+        const prev = focused.previousElementSibling || optionsEl.lastElementChild;
+        if(prev) prev.focus();
+      } else if(ev.key === 'Enter' || ev.key === ' '){
+        ev.preventDefault();
+        focused.click();
+      }
+    }
+  }
+});
+
+/* 결과 표시 (동점 처리 포함) */
+function showResult(){
+  quiz.setAttribute('aria-hidden','true');
+  quiz.style.display = 'none';
+  resultEl.style.display = 'block';
+  resultEl.setAttribute('aria-hidden','false');
+
+  progressBar.style.width = '100%';
+
+  const entries = Object.entries(score);
+  let maxScore = Math.max(...entries.map(e=>e[1]));
+  if(maxScore === 0){
+    resultTitle.textContent = "결과를 찾을 수 없어요";
+    resultDesc.textContent = "질문에 답변해야 유형을 안내할 수 있어요.";
+    resultImg.hidden = true;
+    return;
+  }
+
+  const winners = entries.filter(e=>e[1] === maxScore).map(e=>e[0]);
+  if(winners.length === 1){
+    const t = winners[0];
+    resultTitle.textContent = results[t].title;
+    resultDesc.textContent = results[t].desc;
+    resultImg.src = svgData[t] || '';
+    resultImg.alt = results[t].title;
+    resultImg.hidden = !resultImg.src;
+  } else {
+    const joined = winners.join(' + ');
+    resultTitle.textContent = `✨ 복수 유형: ${joined} (동점)`;
+    let combined = "";
+    winners.forEach((t, i) => {
+      combined += `${results[t].title}\n${results[t].desc}`;
+      if(i < winners.length-1) combined += "\n\n" + "-".repeat(30) + "\n\n";
+    });
+    resultDesc.textContent = combined;
+    const primary = winners[0];
+    resultImg.src = svgData[primary] || '';
+    resultImg.alt = `복수유형 대표: ${primary}`;
+    resultImg.hidden = !resultImg.src;
+  }
+
+  resultDesc.focus();
+}
+
+/* 홈 버튼 */
+homeBtn.addEventListener('click', () => {
+  resultEl.setAttribute('aria-hidden','true');
+  resultEl.style.display='none';
+  intro.style.display='block';
+  intro.setAttribute('aria-hidden','false');
+  currentQuestion = 0;
+  score = { A:0, B:0, C:0, D:0 };
+  progressBar.style.width = '0%';
+  startBtn.focus();
+});
+
+/* 시작 버튼 키 접근성 */
+startBtn.addEventListener('keydown', (e) => { if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); startBtn.click(); } });
+
+/* 이미지 프리로드 */
+Object.values(svgData).forEach(src => { const i = new Image(); i.src = src; });
 </script>
 </body>
-
 </html>
-
