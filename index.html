@@ -5,38 +5,181 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>나의 교사 유형 테스트</title>
 <style>
-body { font-family: 'Nanum Gothic', sans-serif; margin:0; padding:20px; text-align:center; background: #fff; color:#333; }
-button { padding:12px 25px; font-size:1rem; cursor:pointer; margin:8px; border-radius:20px; border:none; }
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: 'Nanum Gothic', sans-serif;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #ffe0ef 0%, #fffbe0 100%);
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* 중앙 정렬을 위해 추가 */
+}
+#main-wrap {
+    padding:24px 12px 32px 12px;
+    max-width: 420px;
+    width: 100%;
+    background:rgba(255,255,255,0.7);
+    border-radius: 30px;
+    box-shadow: 0 8px 24px #f6b0d7, 0 1.5px 0 #ffe6f0 inset;
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+h1 {
+    font-size:2rem;
+    font-weight:800;
+    margin-bottom:16px;
+    letter-spacing:-1.5px;
+    color:#e85a95;
+    background: linear-gradient(90deg,#e85a95 60%,#f7c86a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip:text;
+    text-fill-color:transparent;
+}
+h1 .heart {
+    font-size:1.4em;
+    vertical-align:-0.1em;
+}
 #quiz, #result { display:none; text-align:center; }
-img.result-img { max-width:200px; margin:15px 0; }
-/* 모바일 대응 */
+#intro {
+    text-align:center;
+    margin-top: 32px;
+    margin-bottom: 24px;
+}
+button {
+    padding:12px 25px;
+    font-size:1.1rem;
+    font-weight:600;
+    cursor:pointer;
+    border-radius:22px;
+    border:none;
+    background: linear-gradient(90deg, #ffe0ef 60%, #fffbe0 100%);
+    color: #c84d7c;
+    margin:8px auto 8px auto;
+    box-shadow: 0 2px 10px #ffe0ef66;
+    transition: transform 0.08s, box-shadow 0.2s;
+    display:block;
+}
+button:hover {
+    transform:translateY(-2px) scale(1.04);
+    box-shadow: 0 5px 20px #f7c86a77;
+    background: linear-gradient(90deg, #fffbe0 30%, #ffe0ef 100%);
+}
+#options button {
+    color:#222;
+    background:linear-gradient(90deg,#fffbe0 65%,#ffe0ef 100%);
+    border:1.5px solid #ffe0ef;
+    margin-bottom: 10px;
+    margin-top: 0;
+    font-size:1.05rem;
+    box-shadow: 0 2px 6px #ffe0ef44;
+}
+#options button:active {
+    background:linear-gradient(90deg,#ffe0ef 65%,#fffbe0 100%);
+}
+#quiz {
+    background:rgba(255,255,255,0.92);
+    border-radius:24px;
+    box-shadow:0 4px 16px #ffe0ef55;
+    padding: 24px 10px 20px 10px;
+    margin: 0 0 10px 0;
+}
+#question {
+    font-size:1.13rem;
+    color:#f35b98;
+    margin-bottom:22px;
+    font-weight:700;
+    letter-spacing:-0.5px;
+}
+#result {
+    background:rgba(255,251,224,0.97);
+    border-radius:22px;
+    box-shadow:0 4px 20px #f6b0d766;
+    padding: 28px 10px 36px 10px;
+    margin: 0 0 10px 0;
+}
+#resultTitle {
+    font-size:1.2rem;
+    color:#e85a95;
+    font-weight:800;
+    letter-spacing:-0.5px;
+    margin-bottom:10px;
+}
+img.result-img {
+    max-width:180px;
+    margin:10px 0 12px 0;
+    border-radius: 18px;
+    border: 3px solid #ffe0ef;
+    background:#fffbe0;
+    box-shadow: 0 2px 8px #ffe0ef55;
+}
+#resultDesc {
+    color:#444;
+    font-size:1rem;
+    margin: 12px 0 22px 0;
+    background: #fffbe0;
+    border-radius: 12px;
+    display: inline-block;
+    padding: 12px 22px;
+    box-shadow: 0 1px 6px #ffe0ef33;
+    line-height:1.6;
+}
+#homeBtn {
+    background: linear-gradient(90deg, #ffe0ef 70%, #fffbe0 100%);
+    color: #d18716;
+    font-size:1.08rem;
+    font-weight:700;
+    border: 1px solid #ffe0ef;
+    box-shadow: 0 2px 10px #ffe0ef77;
+}
+#homeBtn:hover {
+    background: linear-gradient(90deg, #fffbe0 30%, #ffe0ef 100%);
+}
 @media (max-width:768px){
-    button { width:90%; }
+    html, body { height: 100%; }
+    body {
+        min-height: 100vh;
+        padding: 0;
+        /* 중앙정렬은 유지 */
+    }
+    #main-wrap {
+        padding:14px 2px 16px 2px;
+        margin-top:0;
+        max-width:98vw;
+    }
+    h1 { font-size:1.22rem; }
+    button { width:94%; font-size:0.97rem; }
+    #resultDesc { font-size:0.95rem; }
+    #question { font-size:1rem; }
 }
 </style>
 </head>
 <body>
-
-<!-- 인트로 화면 -->
-<div id="intro">
-    <h1>💖 나의 교사 유형 테스트 💛</h1>
-    <button id="startBtn">테스트 시작</button>
+<div id="main-wrap">
+    <!-- 인트로 화면 -->
+    <div id="intro">
+        <h1><span class="heart">💛</span> 나의 교사 유형 테스트</h1>
+        <button id="startBtn">테스트 시작</button>
+    </div>
+    <!-- 퀴즈 화면 -->
+    <div id="quiz">
+        <h2 id="question"></h2>
+        <div id="options"></div>
+    </div>
+    <!-- 결과 화면 -->
+    <div id="result">
+        <h2 id="resultTitle"></h2>
+        <img id="resultImg" class="result-img" src="" alt="">
+        <p id="resultDesc" style="white-space: pre-line;"></p>
+        <button id="homeBtn">🏠 홈으로 돌아가기</button>
+    </div>
 </div>
-
-<!-- 퀴즈 화면 -->
-<div id="quiz">
-    <h2 id="question"></h2>
-    <div id="options"></div>
-</div>
-
-<!-- 결과 화면 -->
-<div id="result">
-    <h2 id="resultTitle"></h2>
-    <img id="resultImg" class="result-img" src="" alt="">
-    <p id="resultDesc" style="white-space: pre-line;"></p>
-    <button id="homeBtn">🏠 홈으로 돌아가기</button>
-</div>
-
 <script>
 const questions = [
 { q:"어린이집 실습 첫날 교실에 들어가자마자 나는?", options:["아이들 이름 다 외우려는 인간 암기왕", "선생님 옆에서 노트에 메모만 빼곡히 작성하는 관찰러", "애들이랑 같이 블록 쌓다가 시간 다 감", "사실 긴장해서 손에 땀 범벅…"] },
@@ -126,8 +269,6 @@ homeBtn.onclick = () => {
     resultEl.style.display='none';
     intro.style.display='block';
 };
-
 </script>
-
 </body>
 </html>
